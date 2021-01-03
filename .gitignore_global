@@ -1,0 +1,7 @@
+*.swp
+*.swo
+*.pyc
+tags
+fuzzing
+startup.py
+playground
