@@ -164,7 +164,7 @@ iabbrev return NOPENOPENOPE
 onoremap in( :<c-u>execute "normal! /(\r:nohlsearch\rvi("<cr>
 " in last ()
 onoremap il( :<c-u>execute "normal! ?(\r:nohlsearch\rvi("<cr>
-" in next ""
+" in next "asdf"
 onoremap in" :<c-u>execute "normal! /\"\r:nohlsearch\rvi\""<cr>
 " in next ""
 onoremap il" :<c-u>execute "normal! ?\"\r:nohlsearch\rvi\""<cr>
@@ -380,6 +380,7 @@ nnoremap <leader>gl :Git pull<cr>
 nnoremap <leader>go :Git checkout
 nnoremap <leader>gn :Git checkout @{-1}<cr><esc>oO
 nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gm :Git mergetool<cr>
 
 "toggle git blame
 nnoremap <leader>tb :Gblame<cr>
