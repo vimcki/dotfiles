@@ -5,6 +5,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim-go plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" plugin for generating table tests in go
+Plug 'buoto/gotests-vim'
 " makes status line nice
 Plug 'itchyny/lightline.vim'
 " fzf
@@ -79,6 +81,10 @@ set noswapfile
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
+" set polish end english as spell check languages
+set spelllang=en_us,pl
+set spellfile=~/.vim/spell/it.utf-8.add
+
 "  coc suggested settings ----------------------- {{{
  " " TextEdit might fail if hidden is not set.
 set hidden
@@ -146,6 +152,9 @@ nnoremap <leader>k :cprevious<cr>
 " toggle buffer list
 nnoremap <leader>tl :ls<cr>
 
+" toggle spell check
+nnoremap <leader>ts :set spell!<cr>
+
 " expand json
 nnoremap <F2> i<CR><ESC>v%:B !python -m json.tool<CR>
 " generate ctags
@@ -198,6 +207,8 @@ augroup go_mappings
 	" comment everything to the end of file, useful when fixing tests one at a
 	" time, i should investigate option to run test under cursor
 	autocmd FileType go nnoremap <buffer> <localleader>e 0<c-v>GI//<esc> 
+	" copy test case, assumes every test case starts with name: parameter
+	autocmd FileType go nnoremap <buffer> <localleader>t ?{\n\t\+name:<cr>y%%pi,<cr><esc>:nohlsearch<cr>zz
 	" expand if
 	autocmd FileType go :iabbrev <buffer> iff	if {<cr>}<up><right>
 	" expand struct
@@ -346,6 +357,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup go_coc_mappings
 	autocmd!
 	" comment current line
+	" TODO Make plugin func out of this
+	" autocmd FileType go nnoremap <buffer> <c-a> ?\v^func( \(\a+ \*\a+\)){0,1} (\a+)\(?e<cr>byiw:CocCommand go.test.toggle<cr>/^func Test(\a+){0,1}_<c-r>0<cr>zt:nohlsearch<cr>
 	autocmd FileType go nnoremap <buffer> <c-a> :CocCommand go.test.toggle<cr>
 augroup END
 
@@ -361,6 +374,11 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
+augroup vim_go_mappings
+	autocmd!
+	" comment current line
+	autocmd FileType go nnoremap <buffer> <localleader>r :GoTestFunc<cr>
+augroup END
 " }}}
 " fzf setting ---------------------- {{{
 nnoremap <c-p> :Files<CR>
