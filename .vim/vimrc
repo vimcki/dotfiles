@@ -442,3 +442,12 @@ xmap ih <plug>(signify-motion-inner-visual)
 omap ah <plug>(signify-motion-outer-pending)
 xmap ah <plug>(signify-motion-outer-visual)
 " }}}
+" Quickfile settings ---------------------- {{{
+nnoremap <leader>fm :call QuickFile("makefile")<cr>
+nnoremap <leader>fi :call QuickFile("ci")<cr>
+nnoremap <leader>fc :call QuickFile("config")<cr>
+nnoremap <leader>fb :call QuickFile("build")<cr>
+nnoremap <leader>fo :call QuickFile("models")<cr>
+nnoremap <leader>ft :call QuickFile("test")<cr>
+nnoremap <leader>fr :call QuickFile("readme")<cr>
+" }}}

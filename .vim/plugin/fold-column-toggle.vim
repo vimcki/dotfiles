@@ -1,4 +1,4 @@
-nnoremap <leader>f :call <SID>FoldColumnToggle()<cr>
+nnoremap <leader>tf :call <SID>FoldColumnToggle()<cr>
 
 function! s:FoldColumnToggle()
     if &foldcolumn
