@@ -26,6 +26,8 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 " allows spliting and joining lines of code
 Plug 'AndrewRadev/splitjoin.vim'
+" allows for quick access to commonly edited files
+Plug 'vimcki/vim-quickfile'
 call plug#end()
 " }}}
 " Basic settings ---------------------- {{{
@@ -442,7 +444,7 @@ xmap ih <plug>(signify-motion-inner-visual)
 omap ah <plug>(signify-motion-outer-pending)
 xmap ah <plug>(signify-motion-outer-visual)
 " }}}
-" Quickfile settings ---------------------- {{{
+" vim-quickfile settings ---------------------- {{{
 nnoremap <leader>fm :call QuickFile("makefile")<cr>
 nnoremap <leader>fi :call QuickFile("ci")<cr>
 nnoremap <leader>fc :call QuickFile("config")<cr>
