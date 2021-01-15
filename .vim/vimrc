@@ -204,7 +204,7 @@ augroup go_mappings
 	" comment current line
 	autocmd FileType go nnoremap <buffer> <localleader>c I// <esc>
 	" make comment for exported function
-	autocmd FileType go nnoremap <buffer> <localleader>f ?\v(^func (\([a-zA-Z0-9* ]+\) \|)\|^type )?e<cr>:nohlsearch<cr>wyiwO// <esc>pA
+	autocmd FileType go nnoremap <buffer> <localleader>f ?\v(^func (\([a-zA-Z0-9* ]+\) \|)\|^type )?e<cr>:nohlsearch<cr>wyiwO// <esc>pA 
 	" comment everything to the end of file, useful when fixing tests one at a
 	" time, i should investigate option to run test under cursor
 	autocmd FileType go nnoremap <buffer> <localleader>e 0<c-v>GI//<esc> 
@@ -451,4 +451,5 @@ nnoremap <leader>fb :call QuickFile("build")<cr>
 nnoremap <leader>fo :call QuickFile("models")<cr>
 nnoremap <leader>ft :call QuickFile("test")<cr>
 nnoremap <leader>fr :call QuickFile("readme")<cr>
+nnoremap <leader>fe :call QuickFile("main")<cr>
 " }}}
