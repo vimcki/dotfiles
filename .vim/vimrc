@@ -203,7 +203,7 @@ augroup go_mappings
 	autocmd!
 	" comment current line
 	autocmd FileType go nnoremap <buffer> <localleader>c I// <esc>
-	" make comment for exported function
+	" make comment for exported function/type
 	autocmd FileType go nnoremap <buffer> <localleader>f ?\v(^func (\([a-zA-Z0-9* ]+\) \|)\|^type )?e<cr>:nohlsearch<cr>wyiwO// <esc>pA 
 	" comment everything to the end of file, useful when fixing tests one at a
 	" time, i should investigate option to run test under cursor
