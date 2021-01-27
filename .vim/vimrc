@@ -313,6 +313,7 @@ if isdirectory($HOME . "/.vim/plugged/coc.nvim")
 	 				\'coc-python',
 	 				\'coc-vimlsp',
 	 				\'coc-markdownlint',
+					\'coc-tsserver',
 	  \)
 endif
 " Use tab for trigger completion with characters ahead and navigate.
