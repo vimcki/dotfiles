@@ -279,7 +279,7 @@ augroup END
 " Javascript file settings ---------------------- {{{
 augroup javascipt_settings
 	autocmd!
-	autocmd BufNewFile,BufRead *.js,*.html,*.css
+	autocmd BufNewFile,BufRead *.js
 		\ set tabstop=2 |
 		\ set softtabstop=2 |
 		\ set shiftwidth=2 |

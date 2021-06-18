@@ -7,3 +7,4 @@ startup.py
 playground
 .quickfile
 .links
+.pylintrc
