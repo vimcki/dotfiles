@@ -7,6 +7,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " plugin for generating table tests in go
 Plug 'buoto/gotests-vim'
+" debug go
+Plug 'sebdah/vim-delve'
 " makes status line nice
 Plug 'itchyny/lightline.vim'
 " fzf
@@ -161,6 +163,12 @@ nnoremap <leader>ts :set spell!<cr>
 nnoremap <F2> i<CR><ESC>v%:B !python -m json.tool<CR>
 " generate ctags
 nnoremap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))") ./<CR><CR>
+
+" :tabnew faster
+nnoremap <leader>nt :tabnew<cr>
+
+" explore git commits of current file
+nnoremap <leader>tg :Glog -- %<cr>
 " }}}
 " Common abbreviations ---------------------- {{{
 " example of abbreviation, adn -> and when you in
@@ -170,7 +178,7 @@ iabbrev adn and
 iabbrev ret return
 iabbrev return NOPENOPENOPE
 " }}}
-" Operators ---------------------- {{{
+" Text objects ---------------------- {{{
 " in next()
 onoremap in( :<c-u>execute "normal! /(\r:nohlsearch\rvi("<cr>
 " in last ()
@@ -220,6 +228,15 @@ augroup go_mappings
 	autocmd FileType go :iabbrev <buffer> rng := range
 	" expand if error
 	autocmd FileType go :iabbrev <buffer> iferr if err != nil	{<cr><cr>}<up>
+	  " a loop text object, currently only works with for loop
+  autocmd FileType go onoremap al :execute "normal! ?\^\\t\\+for \r:nohlsearch\rv/\{\r%"<cr>
+  " in loop text object, currently only works with for loop
+  autocmd FileType go onoremap il :execute "normal! ?\^\\t\\+for \r:nohlsearch\r/\{\r0jv?\{\r%0k$"<cr>
+
+  " a if text object, doesn't work with else and elseif yet
+  autocmd FileType go onoremap ai :execute "normal! ?\^\\t\\+if \r:nohlsearch\rv/\{\r%"<cr>
+  " a if text object, doesn't work with else and elseif yet
+  autocmd FileType go onoremap ii :execute "normal! ?\^\\t\\+if \r:nohlsearch\r/\{\r0jv?\{\r%0k$"<cr>
 augroup END
 " }}}
 " Python file settings ---------------------- {{{
