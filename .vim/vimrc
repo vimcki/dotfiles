@@ -314,6 +314,7 @@ if isdirectory($HOME . "/.vim/plugged/coc.nvim")
 	 				\'coc-vimlsp',
 	 				\'coc-markdownlint',
 					\'coc-tsserver',
+					\'coc-rust-analyzer',
 	  \)
 endif
 " Use tab for trigger completion with characters ahead and navigate.
