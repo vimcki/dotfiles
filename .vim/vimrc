@@ -421,7 +421,7 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gm :Git mergetool<cr>
 
 "toggle git blame
-nnoremap <leader>tb :Gblame<cr>
+nnoremap <leader>tb :Git blame<cr>
 " }}}
 " lightline setting ---------------------- {{{
 let g:lightline = {
