@@ -404,7 +404,7 @@ augroup vim_go_mappings
 augroup END
 " }}}
 " fzf setting ---------------------- {{{
-nnoremap <c-p> :Files<CR>
+nnoremap <c-p> :GFiles<CR>
 nnoremap <tab> :Rg<CR>
 nnoremap <leader>u :Tags<CR>
 nnoremap <leader>/ :BLines<CR>
