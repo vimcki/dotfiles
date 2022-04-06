@@ -169,6 +169,9 @@ nnoremap <leader>nt :tabnew<cr>
 
 " explore git commits of current file
 nnoremap <leader>tg :Glog -- %<cr>
+
+" clone close other split and clone current
+nnoremap <leader>c :on<cr>:vsp<cr>
 " }}}
 " Common abbreviations ---------------------- {{{
 " example of abbreviation, adn -> and when you in
