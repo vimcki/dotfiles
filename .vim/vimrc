@@ -330,7 +330,7 @@ if isdirectory($HOME . "/.vim/plugged/coc.nvim")
 					\'coc-json',
 				 	\'coc-sh',
 	 				\'coc-yaml',
-	 				\'coc-python',
+	 				\'coc-pyright',
 	 				\'coc-vimlsp',
 	 				\'coc-markdownlint',
 					\'coc-tsserver',
