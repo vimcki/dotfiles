@@ -1,5 +1,5 @@
 local telescope = require("telescope.builtin")
-local lspconfig = require("lspconfig")
+local null_ls = require("null-ls")
 
 local lsp = require('lsp-zero').preset({
 	name = 'minimal',
@@ -21,7 +21,41 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 cmp_mappings['<C-f>'] = nil
 
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+function Print_cn(client)
+	return true
+end
+
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format({filter = Print_cn})]]
+
+local formatting = null_ls.builtins.formatting
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+null_ls.setup({
+	sources = {
+		formatting.golines,
+		formatting.goimports,
+	},
+	on_attach = function(current_client, bufnr)
+		if current_client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({
+						filter = function(client)
+							return client.name == "null-ls"
+						end,
+						bufnr = bufnr,
+					})
+				end
+			})
+		end
+	end,
+})
+
+vim.cmd [[autocmd BufEnter,BufNew *.rs :compiler cargo]]
 
 lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
@@ -50,4 +84,12 @@ lsp.setup()
 
 vim.diagnostic.config({
 	virtual_text = true
+})
+
+require('lspconfig').gopls.setup({
+	settings = {
+		gopls = {
+			gofumpt = true
+		}
+	}
 })

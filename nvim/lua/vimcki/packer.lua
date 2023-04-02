@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
 
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 	use('nvim-treesitter/playground')
+	use('nvim-treesitter/nvim-treesitter-context')
 
 	use('theprimeagen/harpoon')
 
@@ -76,4 +77,18 @@ return require('packer').startup(function(use)
 	}
 	use { 'ThePrimeagen/vim-be-good' }
 	use { 'eandrju/cellular-automaton.nvim' }
+	use { "github/copilot.vim" }
+
+	use({
+		"jackMort/ChatGPT.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
+	})
+
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+	})
 end)

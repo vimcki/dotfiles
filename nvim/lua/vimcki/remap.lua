@@ -18,6 +18,11 @@ vim.keymap.set("n", "<leader>dj", ":%!jq .<cr>")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+vim.keymap.set("c", "<C-k>", "<Up>")
+vim.keymap.set("c", "<C-j>", "<Down>")
+
+vim.keymap.set("n", "<leader><leader>", ":source $MYVIMRC<cr>")
+
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
