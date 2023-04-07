@@ -21,7 +21,7 @@ vim.keymap.set('n', '<leader>pi', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>pg', builtin.git_status, {})
 vim.keymap.set('n', '<leader>pc', builtin.command_history, {})
 vim.keymap.set('n', '<leader>ld', builtin.diagnostics, {})
-vim.keymap.set('n', '<leader>gc', builtin.git_bcommits, {})
+vim.keymap.set('n', '<leader>pb', builtin.git_bcommits, {})
 
 vim.keymap.set('n', '<C-p>', function()
 	local ok, _ = pcall(builtin.git_files)
