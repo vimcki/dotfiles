@@ -1,0 +1,13 @@
+vim.keymap.set("n", "<leader>bb", ":lua require'dap'.toggle_breakpoint()<cr>")
+vim.keymap.set("n", "<leader>bc", ":lua require'dap'.continue()<cr>")
+vim.keymap.set("n", "<leader>bo", ":lua require'dap'.step_over()<cr>")
+vim.keymap.set("n", "<leader>bi", ":lua require'dap'.step_into()<cr>")
+vim.keymap.set("n", "<leader>bu", ":lua require'dap'.step_out()<cr>")
+vim.keymap.set("n", "<leader>br", ":lua require'dap'.repl.open()<cr>")
+vim.keymap.set("n", "<leader>bt", ":lua require'dap'.run_to_cursor()<cr>")
+vim.keymap.set("n", "<leader>bl", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
+vim.keymap.set("n", "<leader>bp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
+
+require('dap-go').setup()
+require('dapui').setup()
+require('nvim-dap-virtual-text').setup()

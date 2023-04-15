@@ -99,4 +99,10 @@ return require('packer').startup(function(use)
 			require('gotests').setup()
 		end
 	}
+
+	use 'mfussenegger/nvim-dap'
+	use 'rcarriga/nvim-dap-ui'
+	use 'theHamsta/nvim-dap-virtual-text'
+	use 'leoluz/nvim-dap-go'
+	use 'nvim-telescope/telescope-dap.nvim'
 end)
