@@ -93,3 +93,12 @@ require('lspconfig').gopls.setup({
 		}
 	}
 })
+
+require('lspconfig').cucumber_language_server.setup({
+	settings = {
+		cucumber = {
+			features = { 'test/bdd/features/*.feature' },
+			glue = { 'test/bdd/bdd_test.go' }
+		}
+	}
+})

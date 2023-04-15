@@ -3,6 +3,11 @@ local actions = require('telescope.actions')
 
 require('telescope').setup {
 	defaults = {
+		layout_config = {
+			width = 0.95,
+			height = 0.95,
+			preview_width = 100,
+		},
 		mappings = {
 			i = {
 				-- map actions.which_key to <C-h> (default: <C-/>)
@@ -33,7 +38,14 @@ end)
 vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
+
 vim.keymap.set('n', '<leader>pm', builtin.keymaps, {})
 
-
 require('telescope').load_extension('fzf')
+
+vim.keymap.set('n', '<leader>pu', function()
+	builtin.grep_string({
+		search = '',
+		file_ignore_patterns = { "swaggerui/**" },
+	})
+end)

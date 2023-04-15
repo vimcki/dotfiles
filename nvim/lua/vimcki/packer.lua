@@ -91,4 +91,12 @@ return require('packer').startup(function(use)
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 	})
+
+	use {
+		'yanskun/gotests.nvim',
+		ft = 'go',
+		config = function()
+			require('gotests').setup()
+		end
+	}
 end)
