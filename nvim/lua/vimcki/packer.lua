@@ -105,4 +105,9 @@ return require('packer').startup(function(use)
 	use 'theHamsta/nvim-dap-virtual-text'
 	use 'leoluz/nvim-dap-go'
 	use 'nvim-telescope/telescope-dap.nvim'
+
+	use {
+		'renerocksai/telekasten.nvim',
+		requires = { 'nvim-telescope/telescope.nvim' }
+	}
 end)

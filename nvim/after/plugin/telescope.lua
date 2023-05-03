@@ -49,3 +49,5 @@ vim.keymap.set('n', '<leader>pu', function()
 		file_ignore_patterns = { "swaggerui/**" },
 	})
 end)
+
+require('telescope').load_extension('dap')

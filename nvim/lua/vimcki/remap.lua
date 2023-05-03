@@ -15,7 +15,9 @@ vim.keymap.set("n", "<leader>nt", ":tabnew<cr>")
 vim.keymap.set("n", "<leader>nt", ":tabnew<cr>")
 
 vim.keymap.set("n", "<leader>dj", ":%!jq .<cr>")
+
 vim.keymap.set("v", "<leader>fj", ":!fixjson --indent 2<cr>")
+vim.keymap.set("n", "<leader>fj", ":%!fixjson --indent 2<cr>")
 
 vim.keymap.set("n", "<leader>j", ":cnext<cr>")
 vim.keymap.set("n", "<leader>k", ":cprev<cr>")
@@ -46,3 +48,8 @@ vim.api.nvim_set_keymap('n', '<leader>dm',
 
 
 vim.api.nvim_set_keymap('n', '<leader>lw', ':!wsl -fix %<cr>', { noremap = true, silent = true })
+
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
