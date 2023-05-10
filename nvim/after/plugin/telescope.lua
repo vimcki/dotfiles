@@ -1,6 +1,15 @@
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
+local transform_mod = require("telescope.actions.mt").transform_mod
+local mod = {}
+mod.open_first_qf = function(_)
+	vim.cmd [[cfirst]]
+end
+mod = transform_mod(mod)
+
+local smart_send_to_qf = actions.smart_send_to_qflist + mod.open_first_qf
+
 require('telescope').setup {
 	defaults = {
 		layout_config = {
@@ -13,6 +22,7 @@ require('telescope').setup {
 				-- map actions.which_key to <C-h> (default: <C-/>)
 				-- actions.which_key shows the mappings for your picker,
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
+				["<C-q>"] = smart_send_to_qf,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 			}
