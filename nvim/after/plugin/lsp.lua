@@ -94,6 +94,14 @@ require('lspconfig').gopls.setup({
 	}
 })
 
+lsp.configure("yamlls", {
+	settings = {
+		yaml = {
+			keyOrdering = false
+		}
+	}
+})
+
 require('lspconfig').cucumber_language_server.setup({
 	settings = {
 		cucumber = {
