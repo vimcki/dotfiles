@@ -110,4 +110,18 @@ return require('packer').startup(function(use)
 		'renerocksai/telekasten.nvim',
 		requires = { 'nvim-telescope/telescope.nvim' }
 	}
+
+	use {
+		'harrisoncramer/gitlab.nvim',
+		requires = {
+			"rcarriga/nvim-notify",
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim"
+		},
+		run = function() require("gitlab").build() end,
+	}
+
+	use {
+		'vim-test/vim-test',
+	}
 end)
