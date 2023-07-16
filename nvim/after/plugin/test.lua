@@ -1,2 +1,2 @@
-vim.keymap.nnoremap { "<leader>tn", "<cmd>TestNearest<cr>" }
-vim.keymap.nnoremap { "<leader>tt", "<cmd>TestSuite<cr>" }
+vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest<cr>")
+vim.keymap.set("n", "<leader>tt", "<cmd>TestSuite<cr>")
