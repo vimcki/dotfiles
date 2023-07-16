@@ -29,3 +29,10 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 vim.cmd('iabbrev ret return')
+
+local go_group = vim.api.nvim_create_augroup("go", { clear = true })
+
+vim.api.nvim_create_autocmd(
+	"BufEnter",
+	{ pattern = "*.go", command = "iabbrev fn func", group = go_group }
+)
