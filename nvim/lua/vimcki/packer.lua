@@ -121,11 +121,13 @@ return require('packer').startup(function(use)
 		run = function() require("gitlab").build() end,
 	}
 
-	use {
-		'vim-test/vim-test',
-	}
+	use { 'vim-test/vim-test' }
 
-	use {
-		'AndrewRadev/splitjoin.vim',
-	}
+	use { 'AndrewRadev/splitjoin.vim' }
+
+	use { 'numToStr/Comment.nvim' }
+
+	use { "windwp/nvim-autopairs" }
+
+	use { "lukas-reineke/indent-blankline.nvim" }
 end)
