@@ -130,4 +130,8 @@ return require('packer').startup(function(use)
 	use { "windwp/nvim-autopairs" }
 
 	use { "lukas-reineke/indent-blankline.nvim" }
+
+	use { "kiyoon/treesitter-indent-object.nvim" }
+
+	use { "RRethy/nvim-treesitter-textsubjects" }
 end)
