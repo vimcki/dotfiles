@@ -134,4 +134,6 @@ return require('packer').startup(function(use)
 	use { "kiyoon/treesitter-indent-object.nvim" }
 
 	use { "RRethy/nvim-treesitter-textsubjects" }
+	-- Packer
+	use "sindrets/diffview.nvim"
 end)
