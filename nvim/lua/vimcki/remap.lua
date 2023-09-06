@@ -85,3 +85,15 @@ vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Make help open to the right and close with "q"
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	group = vim.api.nvim_create_augroup("help_window_right", {}),
+	pattern = { "*.txt" },
+	callback = function(opts)
+		if vim.o.filetype == "help" then
+			vim.cmd.wincmd("L")
+			vim.keymap.set("n", "q", ":bd<cr>", { buffer = opts.buf })
+		end
+	end,
+})

@@ -7,8 +7,6 @@ api.nvim_create_autocmd("TextYankPost", {
 	group = yankGrp,
 })
 
-
-
 function ColorMyPencils(color)
 	color = color or "dracula"
 	vim.cmd.colorscheme(color)
