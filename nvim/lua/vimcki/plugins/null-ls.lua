@@ -8,6 +8,9 @@ return {
 			sources = {
 				formatting.golines,
 				formatting.goimports,
+				formatting.fixjson.with({
+					args = { "--indent", "2" },
+				}),
 			},
 		})
 	end,

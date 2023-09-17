@@ -56,16 +56,16 @@ return {
 		{ "<leader>mr", "lua require('gitlab').revoke",             "n" },
 		{ "<leader>mc", "lua require('gitlab').create_comment",     "n" },
 		{ "<leader>mg", "lua require('gitlab').toggle_discussions", "n" },
-		{ "<leader>md", "lua require('gitlab').review",             "n" }
-		-- { "<leader>md", function()
-		-- 	local isDiff = vim.fn.getwinvar(nil, "&diff")
-		-- 	local bufName = vim.api.nvim_buf_get_name(0)
-		-- 	if isDiff ~= 0 or starts_with(bufName, "diff") then
-		-- 		vim.cmd.tabclose()
-		-- 		vim.cmd.tabprev()
-		-- 	else
-		-- 		vim.cmd.DiffviewOpen("main")
-		-- 	end
-		-- end, "n" },
+		{ "<leader>md", "lua require('gitlab').review",             "n" },
+		{ "<leader>md", function()
+			local isDiff = vim.fn.getwinvar(nil, "&diff")
+			local bufName = vim.api.nvim_buf_get_name(0)
+			if isDiff ~= 0 or starts_with(bufName, "diff") then
+				vim.cmd.tabclose()
+				vim.cmd.tabprev()
+			else
+				vim.cmd.DiffviewOpen("main")
+			end
+		end, "n" },
 	}
 }
