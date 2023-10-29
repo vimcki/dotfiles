@@ -64,10 +64,15 @@ return {
 		end
 	},
 
-	{ 'vim-test/vim-test',                    event = "VeryLazy" },
-	{ 'numToStr/Comment.nvim',                event = "VeryLazy" },
-	{ "windwp/nvim-autopairs",                event = "VeryLazy" },
-	{ "lukas-reineke/indent-blankline.nvim",  event = "VeryLazy" },
+	{ 'vim-test/vim-test',     event = "VeryLazy" },
+	{ 'numToStr/Comment.nvim', event = "VeryLazy" },
+	{ "windwp/nvim-autopairs", event = "VeryLazy" },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "VeryLazy",
+		main = "ibl",
+		opts = {},
+	},
 	{ "kiyoon/treesitter-indent-object.nvim", event = "VeryLazy" },
 	{ "RRethy/nvim-treesitter-textsubjects",  event = "VeryLazy" },
 }
