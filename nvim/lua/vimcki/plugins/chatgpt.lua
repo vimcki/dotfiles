@@ -14,5 +14,8 @@ return {
 		"ChatGPTCompleteCode",
 		"ChatGPTEditWithInstructions",
 		"ChatGPTRun",
-	}
+	},
+	keys = {
+		{ "<leader>tc", ":ChatGPT<cr>", "n" },
+	},
 }
