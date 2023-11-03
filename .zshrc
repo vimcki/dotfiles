@@ -2,8 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH_THEME=robbyrussell
-export ZSH=/home/user/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -58,7 +58,9 @@ export ZSH=/home/user/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git wd colored-man-pages command-not-found copybuffer fancy-ctrl-z golang kubectl vi-mode)
+
+zstyle ':omz:plugins:nvm' lazy yes
+plugins=(git colored-man-pages command-not-found golang vi-mode per-directory-history nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,15 +92,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-fi
-
-#my
+#
+# VIRTUALENVWRAPPER_PYTHON=$(which python3)
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /home/user/.local/bin/virtualenvwrapper.sh
+#
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-source /home/user/.local/bin/virtualenvwrapper.sh
-# source /home/kuba/.i3/virtualenv-auto-activate.sh
 alias docker_clear='docker stop $(docker ps -aq) ; docker rm $(docker ps -aq)'
 alias gs='git status'
 alias glc='git rev-parse HEAD | xsel'
@@ -112,10 +112,18 @@ alias ci="<.links grep 'ci=' | awk -F'=' '{print \$2}' | xargs brave-browser"
 alias mr="<.links grep 'mr=' | awk -F'=' '{print \$2}' | xargs brave-browser"
 alias jira="brave-browser \`<~/.links | grep '^jira=' | awk -F'=' '{print \$2}'\`/browse/\`git rev-parse --abbrev-ref HEAD | awk -F'/' '{print \$1}'\`"
 
+alias t="tmux-sessionizer"
+alias n="nvim"
+
 setopt hist_ignore_all_dups
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
+
+export GOPATH=/home/user/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
 
 bindkey -v
 export KEYTIMEOUT=50
@@ -132,6 +140,8 @@ bindkey '^r' history-incremental-search-backward
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+per-dir-fzf() { 
+  per-directory-history-toggle-history; fzf-history-widget; per-directory-history-toggle-history
+}
+zle -N per-dir-fzf
+bindkey '^e' per-dir-fzf
