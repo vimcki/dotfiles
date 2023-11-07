@@ -83,12 +83,11 @@ return {
 			lsp.on_attach(function(client, bufnr)
 				local opts = { buffer = bufnr, remap = false }
 
+
 				vim.keymap.set("n", "<C-g>", function() vim.lsp.buf.definition() end, opts)
 				vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 				vim.keymap.set("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end, opts)
 				vim.keymap.set("n", "<leader>lf", function() vim.diagnostic.open_float() end, opts)
-				vim.keymap.set("n", "<leader>lj", function() vim.diagnostic.goto_next() end, opts)
-				vim.keymap.set("n", "<leader>lk", function() vim.diagnostic.goto_prev() end, opts)
 				vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
 				vim.keymap.set("n", "<leader>lr", function() telescope.lsp_references() end, opts)
 				vim.keymap.set("n", "<leader>li", function() telescope.lsp_implementations() end, opts)
@@ -98,6 +97,37 @@ return {
 				vim.keymap.set("n", "<leader>lt", function() vim.lsp.buf.type_definition() end, opts)
 				vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help() end, opts)
 				vim.keymap.set("n", "<leader>ll", ":LspRestart<CR>", opts)
+
+				local function len(t)
+					local n = 0
+
+					for _ in pairs(t) do
+						n = n + 1
+					end
+					return n
+				end
+
+				vim.keymap.set("n", "<C-j>", function()
+					local quickfix_size = len(vim.fn.getqflist())
+					print(quickfix_size)
+					if quickfix_size ~= 0 then
+						vim.cmd("cnext")
+						vim.cmd("normal zz")
+						return
+					end
+					vim.diagnostic.goto_next()
+				end)
+
+				vim.keymap.set("n", "<C-k>", function()
+					local quickfix_size = len(vim.fn.getqflist())
+					print(quickfix_size)
+					if quickfix_size ~= 0 then
+						vim.cmd("cprev")
+						vim.cmd("normal zz")
+						return
+					end
+					vim.diagnostic.goto_prev()
+				end)
 			end)
 
 			-- (Optional) Configure lua language server for neovim
