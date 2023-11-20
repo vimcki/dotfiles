@@ -109,10 +109,11 @@ return {
 
 				vim.keymap.set("n", "<C-j>", function()
 					local quickfix_size = len(vim.fn.getqflist())
-					print(quickfix_size)
 					if quickfix_size ~= 0 then
-						vim.cmd("cnext")
-						vim.cmd("normal zz")
+						local ok, _ = pcall(vim.cmd, "cnext")
+						if ok then
+							vim.cmd("normal zz")
+						end
 						return
 					end
 					vim.diagnostic.goto_next()
@@ -120,10 +121,11 @@ return {
 
 				vim.keymap.set("n", "<C-k>", function()
 					local quickfix_size = len(vim.fn.getqflist())
-					print(quickfix_size)
 					if quickfix_size ~= 0 then
-						vim.cmd("cprev")
-						vim.cmd("normal zz")
+						local ok, _ = pcall(vim.cmd, "cprev")
+						if ok then
+							vim.cmd("normal zz")
+						end
 						return
 					end
 					vim.diagnostic.goto_prev()
