@@ -66,7 +66,6 @@ return {
 
 	{ 'vim-test/vim-test',     event = "VeryLazy" },
 	{ 'numToStr/Comment.nvim', event = "VeryLazy" },
-	{ "windwp/nvim-autopairs", event = "VeryLazy" },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "VeryLazy",

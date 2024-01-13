@@ -127,8 +127,6 @@ return require('packer').startup(function(use)
 
 	use { 'numToStr/Comment.nvim' }
 
-	use { "windwp/nvim-autopairs" }
-
 	use { "lukas-reineke/indent-blankline.nvim" }
 
 	use { "kiyoon/treesitter-indent-object.nvim" }

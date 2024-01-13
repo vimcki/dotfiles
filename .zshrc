@@ -137,7 +137,7 @@ bindkey '^r' history-incremental-search-backward
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 per-dir-fzf() { 
@@ -145,3 +145,9 @@ per-dir-fzf() {
 }
 zle -N per-dir-fzf
 bindkey '^e' per-dir-fzf
+
+. "$HOME/.asdf/asdf.sh"
+    [[ ! -r /home/user/.opam/opam-init/init.zsh ]] || source /home/user/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+
+PATH="$HOME/.local/share/nvim/mason/bin/:$PATH"

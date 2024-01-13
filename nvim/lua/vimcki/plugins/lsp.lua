@@ -80,7 +80,7 @@ return {
 			vim.cmd [[autocmd BufEnter,BufNew *.rs :compiler cargo]]
 
 
-			lsp.on_attach(function(client, bufnr)
+			lsp.on_attach(function(_, bufnr)
 				local opts = { buffer = bufnr, remap = false }
 
 
@@ -88,6 +88,8 @@ return {
 				vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 				vim.keymap.set("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end, opts)
 				vim.keymap.set("n", "<leader>lf", function() vim.diagnostic.open_float() end, opts)
+				vim.keymap.set("n", "<leader>lj", function() vim.diagnostic.goto_next() end, opts)
+				vim.keymap.set("n", "<leader>lk", function() vim.diagnostic.goto_prev() end, opts)
 				vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
 				vim.keymap.set("n", "<leader>lr", function() telescope.lsp_references() end, opts)
 				vim.keymap.set("n", "<leader>li", function() telescope.lsp_implementations() end, opts)
@@ -132,8 +134,23 @@ return {
 				end)
 			end)
 
+			local lspconfig = require('lspconfig')
+			-- local configs = require 'lspconfig.configs'
+			--
+			-- if not configs.nextls then
+			-- 	configs.nextls = {
+			-- 		default_config = {
+			-- 			cmd = { "nextls" },
+			-- 			filetypes = { "elixir" },
+			-- 			root_dir = lspconfig.util.root_pattern("mix.exs", ".git"),
+			-- 			name = "nextls",
+			-- 		},
+			-- 	}
+			-- end
+			-- lspconfig.nextls.setup {}
+
 			-- (Optional) Configure lua language server for neovim
-			require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+			lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 			lsp.nvim_workspace()
 
@@ -145,13 +162,20 @@ return {
 				virtual_text = true
 			})
 
-			require('lspconfig').gopls.setup({
+			lspconfig.gopls.setup({
 				settings = {
 					gopls = {
 						gofumpt = true
 					}
 				}
 			})
+
+
+			lspconfig.elixirls.setup {
+				cmd = { "elixir-ls" }, -- Adjust the path accordingly
+				-- other configuration options...
+			}
+
 
 			lsp.configure("yamlls", {
 				settings = {
