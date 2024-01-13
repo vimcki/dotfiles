@@ -98,3 +98,39 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 		end
 	end,
 })
+
+
+
+
+local function len(t)
+	local n = 0
+
+	for _ in pairs(t) do
+		n = n + 1
+	end
+	return n
+end
+
+vim.keymap.set("n", "<C-j>", function()
+	local quickfix_size = len(vim.fn.getqflist())
+	if quickfix_size ~= 0 then
+		local ok, _ = pcall(vim.cmd, "cnext")
+		if ok then
+			vim.cmd("normal zz")
+		end
+		return
+	end
+	vim.diagnostic.goto_next()
+end)
+
+vim.keymap.set("n", "<C-k>", function()
+	local quickfix_size = len(vim.fn.getqflist())
+	if quickfix_size ~= 0 then
+		local ok, _ = pcall(vim.cmd, "cprev")
+		if ok then
+			vim.cmd("normal zz")
+		end
+		return
+	end
+	vim.diagnostic.goto_prev()
+end)
