@@ -119,6 +119,8 @@ return {
 			-- (Optional) Configure lua language server for neovim
 			lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
+			lspconfig.htmx.setup {}
+
 			lsp.nvim_workspace()
 
 			lsp.setup_nvim_cmp({
