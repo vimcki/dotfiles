@@ -10,6 +10,7 @@
   "elixir-tools.nvim": { "branch": "main", "commit": "6f1138f754ffded9979ffb4520fede8dea233ccc" },
   "gitlab.nvim": { "branch": "main", "commit": "cc68476b15d3bd89105c4c01dd4a24e264bb92c9" },
   "gitsigns.nvim": { "branch": "main", "commit": "87640f5a877b18bdd49884dbcac220fed924b867" },
+  "go-component-generator.nvim": { "branch": "main", "commit": "e49f3fb54625a900dc1221b69dfd3318dbe42459" },
   "gotests.nvim": { "branch": "main", "commit": "571563a6667723b3570238b9d7d56978cc9e213e" },
   "harpoon": { "branch": "master", "commit": "867e212ac153e793f95b316d1731f3ca1894625e" },
   "indent-blankline.nvim": { "branch": "master", "commit": "7206c77cb931f79885fc47f88ae18f99148392eb" },
