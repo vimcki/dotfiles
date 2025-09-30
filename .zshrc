@@ -137,8 +137,6 @@ bindkey '^r' history-incremental-search-backward
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 
 per-dir-fzf() { 
   per-directory-history-toggle-history; fzf-history-widget; per-directory-history-toggle-history
@@ -147,7 +145,25 @@ zle -N per-dir-fzf
 bindkey '^e' per-dir-fzf
 
 . "$HOME/.asdf/asdf.sh"
-    [[ ! -r /home/user/.opam/opam-init/init.zsh ]] || source /home/user/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
+export NVIM_APPNAME="nvim-new"
+PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+alias nn='nvim'
+PATH="/opt/nvim-linux64/bin:$PATH"
 
-PATH="$HOME/.local/share/nvim/mason/bin/:$PATH"
+export VISUAL='nvim'
+export EDITOR="$VISUAL"
+
+eval "$(direnv hook zsh)"
+
+export PATH=$PATH:/home/user/.local/bin
+export PATH=$PATH:/home/user/workspace/Odin
+export PATH=$PATH:/home/user/workspace/ols
+
+export EMSDK_QUIET=1
+source "/home/user/workspace/emsdk/emsdk_env.sh"
+
+alias gdb="gdb -q"
+
+# opencode
+export PATH=/home/user/.opencode/bin:$PATH
